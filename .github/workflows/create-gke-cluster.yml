@@ -6,14 +6,14 @@ on:
   workflow_dispatch:
     inputs:
 
-  push:
+  # push:
     #protection to avoid triggering when other workflow is modified
-    paths: 
-    - '!.github/workflows/**'
-    - '.github/workflows/create-gke-cluster.yml'
+  #  paths: 
+  #  - '!.github/workflows/**'
+  #  - '.github/workflows/create-gke-cluster.yml'
     
-  schedule:
-    - cron:  '0 1 * * MON' 
+  # schedule:
+  #   - cron:  '0 1 * * MON' 
 
 env:
   GCP_ZONE: us-central1-c

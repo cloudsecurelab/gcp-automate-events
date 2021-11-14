@@ -6,14 +6,14 @@ on:
   workflow_dispatch:
     inputs: 
  
-  push:
+  # push:
     #protection to avoid triggering when other workflow is modified
-    paths: 
-    - '!.github/workflows/**'
-    - '.github/workflows/gcloud-filestore.yml'
+  #  paths: 
+  #  - '!.github/workflows/**'
+  #  - '.github/workflows/gcloud-filestore.yml'
     
-  schedule:
-    - cron:  '0 4 30 * MON' 
+  #schedule:
+  #  - cron:  '0 4 30 * MON' 
 
 env:
   GCP_VERBOSITY: warning

@@ -11,8 +11,8 @@ on:
 #    - '!.github/workflows/**'
 #    - '.github/workflows/gcloud-iam.yml'
     
-  schedule:
-    - cron:  '0 3 * * MON' 
+#  schedule:
+#    - cron:  '0 3 * * MON' 
 
 env:
   GCP_VERBOSITY: warning
