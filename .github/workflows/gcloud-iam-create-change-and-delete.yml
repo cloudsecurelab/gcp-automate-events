@@ -6,7 +6,7 @@ on:
     inputs:
  
 #  push:
-#    # Protection to avoid triggering when other workflow is modified
+#    # Avoid triggering when other workflow is modified
 #    paths: 
 #    - '!.github/workflows/**'
 #    - '.github/workflows/gcloud-iam.yml'

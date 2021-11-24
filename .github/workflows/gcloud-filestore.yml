@@ -1,4 +1,4 @@
-# more details this workflow and other at https://github.com/didier-durand/gcloud-tests
+# Create bucket and copy files inside
 name: Use GCP filestore
 
 on:
@@ -7,7 +7,7 @@ on:
     inputs: 
  
   # push:
-    #protection to avoid triggering when other workflow is modified
+  #  # Avoid triggering when other workflow is modified
   #  paths: 
   #  - '!.github/workflows/**'
   #  - '.github/workflows/gcloud-filestore.yml'
@@ -16,8 +16,10 @@ on:
   #  - cron:  '0 4 30 * MON' 
 
 env:
-  GCP_VERBOSITY: warning
-  GCP_BUCKET: gs://test-gcp-bucket
+  GCP_VERBOSITY:  warning
+  GCP_SA_SUFFIX:  ${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com
+  GCP_SA:         demoenv-serviceaccount
+  GCP_BUCKET:     gs://test-gcp-bucket
   
 jobs:
   use-GCP-filestore-services:
