@@ -17,7 +17,7 @@ on:
 env:
   GCP_VERBOSITY: warning
   GCP_SA: demoenv-serviceaccount@${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com
-  GCP_NEW_SA: service-demoenv-account@${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com
+  GCP_NEW_SA: demoenv-serviceacc-deleteme@${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com
 
 jobs:
   create-serviceaccount-and-permissions-IAM:
