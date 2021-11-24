@@ -39,4 +39,5 @@ jobs:
     - name: Get gcloud version & info
       working-directory: alert-policies
       run: |-
-        gcloud alpha monitoring policies create --policy-from-file="rising-cpu-usage.json" --quiet
+        gcloud alpha monitoring policies create --policy-from-file="rising-cpu-usage.json" --quiet Y
+        
