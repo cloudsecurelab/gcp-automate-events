@@ -42,6 +42,12 @@ jobs:
         gcloud version
         echo '--- gcloud info ---'
         gcloud info --anonymize
+
+    - name: Firstly check-delete service account if exists
+      run: |-
+        gcloud iam service-accounts delete $GCP_NEW_SA@$GCP_SA_SUFFIX \
+        --quiet 
+        if: succeeded() || failed()   
         
     - name: Create service account
       run: |-
