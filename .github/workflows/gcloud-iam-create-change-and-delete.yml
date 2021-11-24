@@ -15,9 +15,10 @@ on:
 #    - cron:  '0 3 * * MON' 
 
 env:
-  GCP_VERBOSITY: warning
-  GCP_SA:     demoenv-serviceaccount@${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com
-  GCP_NEW_SA: demoenv-serv-deleteme@${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com
+  GCP_VERBOSITY:  warning
+  GCP_SA_SUFFIX:  ${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com
+  GCP_SA:       demoenv-serviceaccount
+  GCP_NEW_SA:   demoenv-serviceaccount-deleteme
 
 jobs:
   create-serviceaccount-and-permissions-IAM:
@@ -47,3 +48,10 @@ jobs:
         gcloud iam service-accounts create $GCP_NEW_SA \
         --description="Dynamic service account from demoenv. It should not exists for more than five minutes" \
         --display-name="service-demoenv-account"
+        
+    - name: Delete service account
+      run: |-
+        gcloud iam service-accounts delete $GCP_NEW_SA@$GCP_SA_SUFFIX \
+        --quiet
+
+        
