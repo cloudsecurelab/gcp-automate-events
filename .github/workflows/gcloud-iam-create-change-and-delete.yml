@@ -19,7 +19,7 @@ env:
   GCP_SA: demoenv-serviceaccount@${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com
 
 jobs:
-  list-roles-with-Google-IAM:
+  create-serviceaccount-and-permissions-IAM:
   
     runs-on: ubuntu-latest 
 
