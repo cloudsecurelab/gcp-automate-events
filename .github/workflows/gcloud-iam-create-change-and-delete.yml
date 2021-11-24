@@ -45,9 +45,12 @@ jobs:
 
     - name: Firstly check-delete service account if exists
       run: |-
-        gcloud iam service-accounts delete $GCP_NEW_SA@$GCP_SA_SUFFIX \
-        --quiet 
-      if: succeeded() || failed()   
+        if gcloud iam service-accounts delete $GCP_NEW_SA@$GCP_SA_SUFFIX --quiet ; then
+          echo "::Dummy service account detected and deleted::"
+        else
+          echo "::Dummy service account NOT detected::"
+        fi
+
         
     - name: Create service account
       run: |-
