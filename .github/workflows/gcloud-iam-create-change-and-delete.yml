@@ -61,13 +61,13 @@ jobs:
     - name: Add role to service account
       run: |-
         gcloud projects add-iam-policy-binding ${{ secrets.GCP_PROJECT }} \
-        --member=serviceAccount:$GCP_NEW_SA@GCP_SA_SUFFIX --role=roles/accessapproval.viewer \
+        --member=serviceAccount:$GCP_NEW_SA@$GCP_SA_SUFFIX --role=roles/accessapproval.viewer \
         --condition=None
 
     - name: Revoke role to service account
       run: |-
         gcloud projects remove-iam-policy-binding ${{ secrets.GCP_PROJECT }} \
-        --member=serviceAccount:$GCP_NEW_SA@GCP_SA_SUFFIX --role=roles/accessapproval.viewer \
+        --member=serviceAccount:$GCP_NEW_SA@$GCP_SA_SUFFIX --role=roles/accessapproval.viewer \
         --condition=None
 
     - name: Delete service account
