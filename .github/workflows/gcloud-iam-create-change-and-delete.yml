@@ -17,6 +17,7 @@ on:
 env:
   GCP_VERBOSITY: warning
   GCP_SA: demoenv-serviceaccount@${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com
+  GCP_NEW_SA: service-demoenv-account@${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com
 
 jobs:
   create-serviceaccount-and-permissions-IAM:
@@ -43,6 +44,6 @@ jobs:
         
     - name: Create service account
       run: |-
-        gcloud iam service-accounts create service-demoenv-account \
+        gcloud iam service-accounts create $GCP_NEW_SA \
         --description="Dynamic service account from demoenv. It should not exists for more than five minutes" \
         --display-name="service-demoenv-account"
