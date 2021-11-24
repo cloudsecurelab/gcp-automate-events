@@ -18,7 +18,7 @@ env:
   GCP_VERBOSITY:  warning
   GCP_SA_SUFFIX:  ${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com
   GCP_SA:       demoenv-serviceaccount
-  GCP_NEW_SA:   demoenv-serviceaccount-deleteme
+  GCP_NEW_SA:   demoenv-servaccount-deleteme
 
 jobs:
   create-serviceaccount-and-permissions-IAM:
