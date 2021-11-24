@@ -1,4 +1,4 @@
-name: Create IAM account, change roles, delete IAM account
+name: Create and delete alert policies
 
 on: 
   
@@ -40,4 +40,3 @@ jobs:
       working-directory: alert-policies
       run: |-
         gcloud alpha monitoring policies create --policy-from-file="rising-cpu-usage.json"
-        
