@@ -36,8 +36,12 @@ jobs:
         project_id: ${{ secrets.GCP_PROJECT }}
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         
-    - name: Get gcloud version & info
+    - name: Update gcloud CLI
+      run: |-
+        gcloud components update --quiet
+
+    - name: Create monitoring policy
       working-directory: alert-policies
       run: |-
-        gcloud alpha monitoring policies create --policy-from-file="rising-cpu-usage.json" --quiet Y
-        
+        gcloud alpha monitoring policies create --policy-from-file="rising-cpu-usage.json" --quiet
+
