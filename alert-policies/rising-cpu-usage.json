@@ -1,0 +1,23 @@
+{
+  "displayName": "High CPU rate of change",
+  "combiner": "OR",
+  "conditions": [
+    {
+      "displayName": "CPU usage is increasing at a high rate",
+      "conditionThreshold": {
+         "aggregations": [
+           {
+             "alignmentPeriod": "900s",
+             "perSeriesAligner": "ALIGN_PERCENT_CHANGE",
+           }],
+        "comparison": "COMPARISON_GT",
+        "duration": "180s",
+        "filter": "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" AND resource.type=\"gce_instance\"",
+        "thresholdValue": 0.5,
+        "trigger": {
+          "count": 1
+         }
+      }
+    }
+  ],
+}

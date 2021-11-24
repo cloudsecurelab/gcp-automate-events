@@ -1,0 +1,43 @@
+name: Create IAM account, change roles, delete IAM account
+
+on: 
+  
+  workflow_dispatch:
+    inputs:
+ 
+#  push:
+#    # Avoid triggering when other workflow is modified
+#    paths: 
+#    - '!.github/workflows/**'
+#    - '.github/workflows/gcloud-iam.yml'
+    
+#  schedule:
+#    - cron:  '0 3 * * MON' 
+
+env:
+  GCP_VERBOSITY:  warning
+  GCP_SA_SUFFIX:  ${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com
+  GCP_SA:       demoenv-serviceaccount
+  GCP_NEW_SA:   demoenv-servaccount-deleteme
+
+jobs:
+  create-serviceaccount-and-permissions-IAM:
+  
+    runs-on: ubuntu-latest 
+
+    steps:
+        
+    - name: Checkout
+      uses: actions/checkout@v2.3.4
+
+    - name: Setup gcloud CLI
+      uses: google-github-actions/setup-gcloud@master
+      with:
+        project_id: ${{ secrets.GCP_PROJECT }}
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        
+    - name: Get gcloud version & info
+      working-directory: alert-policies
+      run: |-
+        gcloud alpha monitoring policies create --policy-from-file="rising-cpu-usage.json"
+        

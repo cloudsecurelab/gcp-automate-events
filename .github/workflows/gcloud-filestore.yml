@@ -1,5 +1,5 @@
 # Create bucket and copy files inside
-name: Use GCP filestore
+name: GCP create, upload, delete filestore
 
 on:
 

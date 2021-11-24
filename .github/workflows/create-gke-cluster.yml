@@ -1,4 +1,4 @@
-# more details this workflow and other at https://github.com/didier-durand/gcloud-tests
+# GKE cluster creation
 name: Create GKE cluster
 
 on:  
@@ -7,7 +7,7 @@ on:
     inputs:
 
   # push:
-    #protection to avoid triggering when other workflow is modified
+  # # protection to avoid triggering when other workflow is modified
   #  paths: 
   #  - '!.github/workflows/**'
   #  - '.github/workflows/create-gke-cluster.yml'
@@ -18,7 +18,7 @@ on:
 env:
   GCP_ZONE: us-central1-c
   GCP_VERBOSITY: warning
-  GKE_CLUSTER: test-gke-cluster
+  GKE_CLUSTER: demoenv-gke-cluster
   GKE_SERVICE: tutum-hello-world
 
 jobs:
