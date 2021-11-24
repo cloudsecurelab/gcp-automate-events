@@ -16,7 +16,7 @@ on:
 
 env:
   GCP_VERBOSITY: warning
-  GCP_SA: gcp-showcase-sa@${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com
+  GCP_SA: demoenv-serviceaccount@${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com
 
 jobs:
   list-roles-with-Google-IAM:
