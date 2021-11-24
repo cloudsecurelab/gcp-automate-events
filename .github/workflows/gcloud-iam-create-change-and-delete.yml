@@ -1,4 +1,4 @@
-name: List IAM roles
+name: Create IAM account, change roles, delete IAM account
 
 on: 
   
@@ -41,22 +41,9 @@ jobs:
         echo '--- gcloud info ---'
         gcloud info --anonymize
         
-    - name: List IAM roles
+    - name: Create service account
       run: |-
         gcloud iam roles list --verbosity=$GCP_VERBOSITY --project=${{ secrets.GCP_PROJECT }} --quiet
-        
-    - name: List IAM service accounts
-      run: |-
-        gcloud iam service-accounts list --verbosity=$GCP_VERBOSITY --project=${{ secrets.GCP_PROJECT }} --quiet
-        
-    - name: Describe IAM service account
-      run: |-
-        gcloud iam service-accounts describe $GCP_SA --verbosity=$GCP_VERBOSITY --project=${{ secrets.GCP_PROJECT }} --quiet
-        
-    - name: Describe IAM policy for service account
-      run: |-
-        gcloud iam service-accounts get-iam-policy $GCP_SA --verbosity=$GCP_VERBOSITY --project=${{ secrets.GCP_PROJECT }} --quiet
-        
-    - name: List IAM keys for service account
-      run: |-
-        gcloud iam service-accounts keys list --iam-account=$GCP_SA --verbosity=$GCP_VERBOSITY --project=${{ secrets.GCP_PROJECT }} --quiet
+        gcloud iam service-accounts create service-demoenv-account \
+        --description="Dynamic service account from demoenv. It should not exists for more than five minutes" \
+        --display-name="service-demoenv-account"
