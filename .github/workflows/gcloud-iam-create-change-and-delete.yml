@@ -49,6 +49,17 @@ jobs:
         --description="Dynamic service account from demoenv. It should not exists for more than five minutes" \
         --display-name="service-demoenv-account"
         
+    - name: Add role to service account
+      run: |-
+        gcloud projects add-iam-policy-binding ${{ secrets.GCP_PROJECT }} \
+        --member=serviceAccount:$GCP_NEW_SA@GCP_SA_SUFFIX --role=roles/accessapproval.viewer
+
+    - name: Revoke role to service account
+      run: |-
+        gcloud projects remove-iam-policy-binding ${{ secrets.GCP_PROJECT }} \
+        --member=serviceAccount:$GCP_NEW_SA@GCP_SA_SUFFIX --role=roles/accessapproval.viewer
+
+
     - name: Delete service account
       run: |-
         gcloud iam service-accounts delete $GCP_NEW_SA@$GCP_SA_SUFFIX \
