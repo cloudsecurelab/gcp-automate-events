@@ -47,7 +47,7 @@ jobs:
       run: |-
         gcloud iam service-accounts delete $GCP_NEW_SA@$GCP_SA_SUFFIX \
         --quiet 
-        if: succeeded() || failed()   
+      if: succeeded() || failed()   
         
     - name: Create service account
       run: |-
