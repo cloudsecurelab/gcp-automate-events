@@ -43,7 +43,6 @@ jobs:
         
     - name: Create service account
       run: |-
-        gcloud iam roles list --verbosity=$GCP_VERBOSITY --project=${{ secrets.GCP_PROJECT }} --quiet
         gcloud iam service-accounts create service-demoenv-account \
         --description="Dynamic service account from demoenv. It should not exists for more than five minutes" \
         --display-name="service-demoenv-account"
