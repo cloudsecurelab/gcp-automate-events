@@ -1,4 +1,4 @@
-# Create and delete VPC
+# GCP VPC create and delete
 name: Create VPC peering
 
 on:
