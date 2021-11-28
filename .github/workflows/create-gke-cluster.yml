@@ -52,7 +52,7 @@ jobs:
     - name: Create GKE cluster
       run: |-
         gcloud container clusters create $GKE_CLUSTER --verbosity=$GCP_VERBOSITY --project=${{ secrets.GCP_PROJECT }} --zone $GCP_ZONE --quiet --num-nodes=3
-    
+        
     - name: Get the GKE credentials to deploy to the cluster
       run: |-
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GCP_ZONE
