@@ -1,5 +1,5 @@
 # Create bucket and copy files inside
-name: GCP create, upload, delete filestore
+name: GCP S3 Create/Delete S3
 
 on:
 

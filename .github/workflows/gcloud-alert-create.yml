@@ -1,4 +1,4 @@
-name: Create and delete alert policies
+name: GCP Policies-Alerts create and delete
 
 on: 
   
