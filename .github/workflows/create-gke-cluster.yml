@@ -47,7 +47,7 @@ jobs:
     - name: Clean up
       run: |-
         gcloud container clusters list --verbosity=$GCP_VERBOSITY --project=${{ secrets.GCP_PROJECT }}
-        gcloud container clusters delete $GKE_CLUSTER --verbosity=$GCP_VERBOSITY --project=${{ secrets.GCP_PROJECT }} --zone=$GCP_ZONE --quiet || true
+        gcloud container clusters delete $GKE_CLUSTER --verbosity=$GCP_VERBOSITY --project=${{ secrets.GCP_PROJECT }} --zone $GCP_ZONE --quiet || true
         
     - name: Create GKE cluster
       run: |-
